@@ -25,14 +25,4 @@ class ListFragment : Fragment() {
 
         return view
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonGoDetailFragment.setOnClickListener {
-            val dogUuid = 5
-            val action = ListFragmentDirections.actionDetailFragment(dogUuid)
-            Navigation.findNavController(it).navigate(action)
-        }
-    }
 }
