@@ -30,7 +30,8 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonGoDetailFragment.setOnClickListener {
-            val action = ListFragmentDirections.actionDetailFragment()
+            val dogUuid = 5
+            val action = ListFragmentDirections.actionDetailFragment(dogUuid)
             Navigation.findNavController(it).navigate(action)
         }
     }

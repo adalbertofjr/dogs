@@ -20,6 +20,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class DetailFragment : Fragment() {
+    private var dogUuid: Int = 0
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
 
@@ -34,6 +35,11 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        arguments?.let {
+            dogUuid = DetailFragmentArgs.fromBundle(it).dogUuid
+            binding.textDetailFragment.text = "O cachorro escolhifo foi ${dogUuid}"
+        }
 
         binding.buttonGoListFragment.setOnClickListener {
             val action = DetailFragmentDirections.actionListFragment()
