@@ -33,17 +33,4 @@ class DetailFragment : Fragment() {
         return view
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        arguments?.let {
-            dogUuid = DetailFragmentArgs.fromBundle(it).dogUuid
-            binding.textDetailFragment.text = "O cachorro escolhifo foi ${dogUuid}"
-        }
-
-        binding.buttonGoListFragment.setOnClickListener {
-            val action = DetailFragmentDirections.actionListFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
-    }
 }
