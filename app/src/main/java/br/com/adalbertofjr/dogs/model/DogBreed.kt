@@ -1,7 +1,7 @@
 package br.com.adalbertofjr.dogs.model
 
 data class DogBreed(
-    val breedId: String?,
+    val breedId: String = "0",
     val dogBreed: String?,
     val lifeSpan: String?,
     val breedGroup: String?,
