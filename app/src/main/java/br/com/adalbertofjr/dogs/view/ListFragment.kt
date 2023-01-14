@@ -1,5 +1,6 @@
 package br.com.adalbertofjr.dogs.view
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +40,17 @@ class ListFragment : Fragment() {
         binding.dogList.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = dogListAdapter
+        }
+
+        binding.refreshLayout.setOnRefreshListener {
+            binding.apply {
+                dogList.visibility = View.GONE
+                listError.visibility = View.GONE
+                loadingView.visibility = View.VISIBLE
+                viewModel.refresh()
+                refreshLayout.isRefreshing = false
+            }
+
         }
 
         observeViewModel()
