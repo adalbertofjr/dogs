@@ -6,6 +6,8 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import br.com.adalbertofjr.dogs.databinding.ItemDogBinding
 import br.com.adalbertofjr.dogs.model.DogBreed
+import br.com.adalbertofjr.dogs.util.getProgressDrawable
+import br.com.adalbertofjr.dogs.util.loadImage
 
 class DogListAdapter(val dogsList: ArrayList<DogBreed>) :
     RecyclerView.Adapter<DogListAdapter.DogViewHolder>() {
@@ -46,6 +48,7 @@ class DogListAdapter(val dogsList: ArrayList<DogBreed>) :
             binding.apply {
                 name.text = dog.dogBreed
                 lifespan.text = dog.lifeSpan
+                imageView.loadImage(dog.imageUrl, getProgressDrawable(imageView.context))
             }
         }
     }
