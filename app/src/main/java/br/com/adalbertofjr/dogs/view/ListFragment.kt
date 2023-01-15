@@ -1,6 +1,5 @@
 package br.com.adalbertofjr.dogs.view
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

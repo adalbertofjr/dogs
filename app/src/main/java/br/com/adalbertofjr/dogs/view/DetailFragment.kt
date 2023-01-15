@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
-import br.com.adalbertofjr.dogs.R
 import br.com.adalbertofjr.dogs.databinding.FragmentDetailBinding
+import br.com.adalbertofjr.dogs.util.getProgressDrawable
+import br.com.adalbertofjr.dogs.util.loadImage
 import br.com.adalbertofjr.dogs.viewmodel.DetailViewModel
 
 /**
@@ -37,11 +37,12 @@ class DetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
-        viewModel.fetch()
 
         arguments?.let {
             dogUuid = DetailFragmentArgs.fromBundle(it).dogUuid
         }
+
+        viewModel.fetch(dogUuid)
 
         observeViewModel()
     }
@@ -54,6 +55,7 @@ class DetailFragment : Fragment() {
                     dogPurpose.text = dog.bredFor
                     dogTemperament.text = dog.temperament
                     dogLifespan.text = dog.lifeSpan
+                    dogImage.loadImage(dog.imageUrl, getProgressDrawable(dogImage.context))
                 }
             }
         })
