@@ -35,7 +35,6 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         viewModel = ViewModelProviders.of(this).get(DetailViewModel::class.java)
 
         arguments?.let {
@@ -43,20 +42,13 @@ class DetailFragment : Fragment() {
         }
 
         viewModel.fetch(dogUuid)
-
         observeViewModel()
     }
 
     private fun observeViewModel() {
         viewModel.dogLiveData.observe(viewLifecycleOwner, Observer { dog ->
             dog?.let {
-                binding.apply {
-                    dogName.text = dog.dogBreed
-                    dogPurpose.text = dog.bredFor
-                    dogTemperament.text = dog.temperament
-                    dogLifespan.text = dog.lifeSpan
-                    dogImage.loadImage(dog.imageUrl, getProgressDrawable(dogImage.context))
-                }
+                binding.dog = it
             }
         })
     }
