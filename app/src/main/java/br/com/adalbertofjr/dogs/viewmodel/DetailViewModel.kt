@@ -16,8 +16,6 @@ class DetailViewModel(application: Application) : BaseViewModel(application) {
         launch {
             val dog = DogDatabase(getApplication()).dogDao().getDog(dogUuid)
             dogRetrivied(dog)
-            Toast.makeText(getApplication(), "Dog retrivied from database", Toast.LENGTH_SHORT)
-                .show()
         }
     }
 
